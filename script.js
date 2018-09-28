@@ -133,3 +133,69 @@ function iqTest(numbers) {
     return num
 }
 iqTest([2,2,2, ' ',2,2,4,4,4, 3]);
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+// For "x", determine how many positive integers less than or equal to "x" are odd but not prime. Assume "x" is an integer between 1 and 10000.
+
+// Example: 5 has three odd numbers (1,3,5) and only the number 1 is not prime, so the answer is 1
+
+// Example: 10 has five odd numbers (1,3,5,7,9) and only 1 and 9 are not prime, so the answer is 2
+
+function oddNotPrime(n){
+    
+    var newArr = []
+    for (var counter = 0; counter <= n; counter++) {
+        var notPrime = false;
+        for (var i = 2; i <= counter; i++) {
+            if (counter%i===0 && i!==counter) {
+                notPrime = true;
+            }
+        }
+        if (notPrime === true) {
+            newArr.push(counter)
+        }
+    }
+    let final = newArr.filter(e => e % 2 !== 0)
+    return final.length + 1
+  }
+oddNotPrime(10)
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// You will be given an vector of string(s). You must sort it alphabetically (case-sensitive!!) and then return the first value.
+
+// The returned value must be a string, and have "***" between each of its letters.
+
+// You should not remove or add elements from/to the array.
+
+function twoSort(s) {
+    let words = s.sort()
+    let word = []
+    let answer = ''
+    for ( let i = 0; i < words[0].split('').length; i++) {
+        if (i === words[0].split('').length-1) {
+            word.push(words[0].split('')[i])
+        } else {
+            word.push(words[0].split('')[i] + '***')
+        }
+    }
+    return word.join('')
+}
+
+twoSort(["bitcoin", "take", "over", "the", "world", "maybe", "who", "knows", "perhaps"])
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// Write a program that finds the summation of every number between 1 and num. The number will always be a positive integer greater than 0.
+
+var summation = function (num) {
+    let sum = 0
+    for ( let i = 0; i <= num; i++) {
+        sum += i
+    }
+    return sum
+  }
